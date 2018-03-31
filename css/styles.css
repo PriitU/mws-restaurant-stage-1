@@ -107,9 +107,11 @@ nav h1 a {
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
-  height: 100px;
   background-color: #3397DB;
   align-items: center;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
 }
 .filter-options h2 {
   color: white;
@@ -129,7 +131,7 @@ nav h1 a {
   letter-spacing: 0;
   margin: 10px;
   padding: 0 10px;
-  width: 200px;
+  width: 80%;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -275,6 +277,7 @@ nav h1 a {
   font-weight: 300;
   letter-spacing: -1px;
   padding-bottom: 1pt;
+	margin-left: 15px;
 }
 #reviews-list {
   margin: 0;
@@ -310,5 +313,11 @@ nav h1 a {
 	}
 	#reviews-container {
 		width: 50%;
+	}
+	.filter-options select {
+	  width: 40%;
+	}
+	.filter-options {
+		flex-direction: row;
 	}
 }
