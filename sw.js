@@ -1,3 +1,5 @@
+importScripts('/js/idb.js');
+
 var cacheName = 'restaurants';
 var urlsToCache = [
   '/',

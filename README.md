@@ -16,7 +16,7 @@ Accessibility: 94
 
 **Mobile:**  
 Progressive Web App: 91  
-Performance: 95  
+Performance: 96  
 Accessibility: 94  
 
 ## Installation:
