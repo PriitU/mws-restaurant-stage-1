@@ -7,17 +7,17 @@ For the **Restaurant Reviews** projects, you will incrementally convert a static
 
 ## Project overview: Sage 2
 
-The client application is pulling data from the development server.
-Lighthouse scores:
-**Desktop:**
-Progressive Web App: 91
-Performance: 94
-Accessibility: 94
+The client application is pulling data from the development server.  
+Lighthouse scores:  
+**Desktop:**  
+Progressive Web App: 91  
+Performance: 94  
+Accessibility: 94  
 
-**Mobile:**
-Progressive Web App: 91
-Performance: 95
-Accessibility: 94
+**Mobile:**  
+Progressive Web App: 91  
+Performance: 95  
+Accessibility: 94  
 
 ## Installation:
 
