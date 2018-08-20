@@ -7,7 +7,14 @@ For the **Restaurant Reviews** projects, you will incrementally convert a static
 
 ## Project overview: Sage 2
 
-The client application is pulling data from the development server.  
+The client application is pulling data from the development server.
+
+## Project overview: Sage 3
+
+Added functionality to mark favorite restaurants.
+Added functionality for writing and reading reviews. The reviews can be written while offline, they will be stored in local storage until network is restored. 
+
+
 Lighthouse scores:  
 **Desktop:**  
 Progressive Web App: 91  

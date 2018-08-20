@@ -190,6 +190,17 @@ nav h1 a {
   text-transform: uppercase;
 }
 
+.heart {
+  color: #CBCDCE;
+	border: none;
+  background: none;
+	font-size: 35px;
+}
+.favorite {
+		color: #DC3232;
+}
+.heart:focus {outline:0;}
+
 /* ====================== Restaurant Details ====================== */
 .inside header {
   position: fixed;
@@ -250,30 +261,47 @@ nav h1 a {
   text-transform: uppercase;
 	width: 90%;
 }
-#restaurant-container, #reviews-container {
+#restaurant-container, #reviews-container, #addReview-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 10px 0px 50px 1px;
   width: 100%;
+	display: block;
 }
 #restaurant-container {
 	order: 2;
-	display: block;
 }
 #restaurant-container > * {
 	margin-left: 5%;
 	margin-right: 5%;
 }
-#reviews-container {
+#addReview-container {
 	order: 3;
-	display: block;
+}
+#addReview-container > form, h2 {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+form {
+  width: 86%;
+  max-width: 350px;
+}
+
+#reviewComments, #rating, #reviewAuthor, #submitReview {
+	  width: 100%;
+		margin-bottom: 5px;
+}
+
+#reviews-container {
+	order: 4;
 }
 #reviews-container > ul {
 	margin-left: 5%;
 	margin-right: 5%;
 }
-#reviews-container h2 {
-  color: #f58500;
+#reviews-container > h2, #addReview-container > h2  {
+  color: #f18200;
   font-size: 24pt;
   font-weight: 300;
   letter-spacing: -1px;
@@ -313,6 +341,9 @@ nav h1 a {
 		padding: 140px 0px 0px 0px;
 	}
 	#reviews-container {
+		width: 50%;
+	}
+	#addReview-container {
 		width: 50%;
 	}
 	.filter-options select {

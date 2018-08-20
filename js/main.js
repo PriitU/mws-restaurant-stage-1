@@ -160,8 +160,18 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 }
 
 /**
- * Create restaurant HTML.
+ * Update Favorite icon class and aria labels.
  */
+chElementClass = (elem, fav) => {
+  if (!fav) {
+    elem.classList.remove('favorite');
+    elem.setAttribute('aria-label', 'Mark this restaurant as your favorite');
+  } else {
+    elem.classList.add('favorite');
+    elem.setAttribute('aria-label', 'Unmark this restaurant from your favorites');
+  }
+}
+
 createRestaurantHTML = (restaurant, tIndex) => {
   const li = document.createElement('li');
 
@@ -174,6 +184,18 @@ createRestaurantHTML = (restaurant, tIndex) => {
   const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
+
+  const favorite = document.createElement('button');
+  favorite.classList.add("heart");
+  favorite.innerHTML = '❤';
+  favorite.onclick = () => {
+    const favState = !restaurant.is_favorite;
+    DBHelper.updateFavoriteStatus(restaurant.id, favState);
+    restaurant.is_favorite = !restaurant.is_favorite;
+    chElementClass(favorite, restaurant.is_favorite);
+  };
+  chElementClass(favorite, restaurant.is_favorite)
+  li.append(favorite);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
@@ -207,18 +229,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 }
-
-/**
- * Add markers for current restaurants to the map.
-
-addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
-    });
-    self.markers.push(marker);
-  });
-}
- */

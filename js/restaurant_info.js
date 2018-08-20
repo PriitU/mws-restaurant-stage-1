@@ -1,8 +1,6 @@
 let restaurant;
 var newMap;
 
-
-
 /**
  * Initialize map as soon as the page is loaded.
  */
@@ -37,25 +35,6 @@ initMap = () => {
   });
 }
 
-/**
- * Initialize Google map, called from HTML.
-
-window.initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
-    }
-  });
-}
- */
 /**
  * Get current restaurant from page URL.
  */
@@ -143,7 +122,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     return;
   }
   const ul = document.getElementById('reviews-list');
-  reviews.forEach(review => {
+  reviews.reverse().forEach(review => {
     ul.appendChild(createReviewHTML(review));
   });
   container.appendChild(ul);
@@ -155,11 +134,11 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
-  name.innerHTML = review.name;
+  name.innerHTML = 'Name: ' + review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
-  date.innerHTML = review.date;
+  date.innerHTML = 'Date: ' + new Date(review.createdAt).toLocaleString();
   li.appendChild(date);
 
   const rating = document.createElement('p');
@@ -197,4 +176,36 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+/**
+ * Add a new review to the review list
+ */
+addReviewToPage = (review) => {
+    const container = document.getElementById('reviews-container');
+    const ul = document.getElementById('reviews-list');
+    ul.insertBefore(createReviewHTML(review), ul.firstChild);
+    container.appendChild(ul);
+}
+
+/**
+ * New review handling
+ */
+handleReview = () => {
+  event.preventDefault();
+  const restId = getParameterByName('id');
+  const authorName = document.getElementById('reviewAuthor').value;
+  const rating = document.querySelector('#rating option:checked').value;
+  const comments = document.getElementById('reviewComments').value;
+  const review = [restId, rating, authorName, comments];
+  const reviewObject = {
+    restaurant_id: parseInt(review[0]),
+    rating: parseInt(review[1]),
+    name: review[2],
+    comments: review[3].substring(0,300),
+    createdAt: new Date()
+  };
+  DBHelper.saveReview(reviewObject);
+  addReviewToPage(reviewObject);
+  document.getElementById('reviewForm').reset();
 }
