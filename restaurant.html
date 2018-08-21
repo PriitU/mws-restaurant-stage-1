@@ -4,6 +4,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Normalize.css for better cross-browser consistency -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#317EFB"/>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -47,12 +49,12 @@
     <section id="addReview-container">
       <h2>Add review</h2>
       <form id="reviewForm">
-      Name:<br>
-      <input id="reviewAuthor" type="text" /><br>
-      Review:<br>
-      <textarea name="comments" id="reviewComments" cols="30" rows="10"></textarea><br>
-      Rating:<br>
-      <select id="rating" name="rating">
+      <label for="reviewAuthor">Name:</label><br>
+      <input id="reviewAuthor" type="text" arial-label="Write your name for the review" /><br>
+      <label for="reviewComments">Review:</label><br>
+      <textarea name="comments" id="reviewComments" cols="30" rows="10" arial-label="Write your review of the restaurant"></textarea><br>
+      <label for="rating">Rating:</label><br>
+      <select id="rating" name="rating" arial-label="Choose a rating for the restaurant on a 5 point scale">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
